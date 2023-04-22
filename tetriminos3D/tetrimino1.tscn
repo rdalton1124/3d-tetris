@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://sqh2vlue7p41"]
+
+[ext_resource type="Script" path="res://scripts/tetrimino3D.gd" id="1_qul11"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfsth"]
+albedo_color = Color(0.00784314, 0, 0.580392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tdhj1"]
+material = SubResource("StandardMaterial3D_xfsth")
+
+[node name="root" type="Node3D"]
+
+[node name="tetrimino1" type="CharacterBody3D" parent="."]
+script = ExtResource("1_qul11")
+
+[node name="mesh" type="Node3D" parent="tetrimino1"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="tetrimino1/mesh"]
+transform = Transform3D(0.999575, 0.000220999, -0.000364621, -0.000221891, 0.999573, -0.00245801, 0.000364079, 0.0024581, 0.999572, 0, 0, 0)
+mesh = SubResource("BoxMesh_tdhj1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="tetrimino1/mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("BoxMesh_tdhj1")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="tetrimino1/mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_tdhj1")
+skeleton = NodePath("../../../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="tetrimino1/mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_tdhj1")
+skeleton = NodePath("../../../../../../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999913, 0.0119009, -0.00562122, 0.0118872, 0.999926, 0.00247551, 0.00565026, 0.00240848, -0.999981, 0.411532, 1.39597, -3.66298)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18446, -2.61674)

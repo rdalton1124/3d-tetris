@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg0w77213u7dk"]
+
+[ext_resource type="Script" path="res://scripts/tetrimino3D.gd" id="1_mrb1t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsu5a"]
+albedo_color = Color(0.976471, 0.976471, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3no05"]
+material = SubResource("StandardMaterial3D_nsu5a")
+
+[node name="tetrimino4" type="CharacterBody3D"]
+script = ExtResource("1_mrb1t")
+
+[node name="mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, -0.000470422, 0.000292922, 0.000470495, 1, -0.000256947, -0.000292806, 0.000257079, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_3no05")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, -0.000470422, 0.000292922, 0.000470495, 1, -0.000256947, -0.000292806, 0.000257079, 1, 1, 0, 0)
+mesh = SubResource("BoxMesh_3no05")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(0.999996, -0.00262884, -0.000120647, 0.00262882, 0.999996, -0.000177543, 0.000121107, 0.00017721, 1, 1, 1, 0)
+mesh = SubResource("BoxMesh_3no05")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(0.999998, -0.00192704, -8.40017e-05, 0.00192704, 0.999998, 0.000227875, 8.35793e-05, -0.000228038, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_3no05")
