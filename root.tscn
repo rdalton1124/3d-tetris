@@ -1,8 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://1vmarn26dta4"]
+[gd_scene load_steps=6 format=3 uid="uid://1vmarn26dta4"]
 
 [ext_resource type="PackedScene" uid="uid://cpwnc80woec0" path="res://tetriminos3D/tetrimino6.tscn" id="1_amr45"]
+[ext_resource type="Texture2D" uid="uid://b0qgny2r33yl5" path="res://checker.png" id="1_opv7x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s0fn"]
+albedo_texture = ExtResource("1_opv7x")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d5mrg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjp8o"]
+size = Vector3(2, 0.008, 2)
 
 [node name="root" type="Node3D"]
 
@@ -11,14 +18,20 @@
 [node name="floor" type="StaticBody3D" parent="well"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="well/floor"]
+material_override = SubResource("StandardMaterial3D_5s0fn")
 mesh = SubResource("PlaneMesh_d5mrg")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0.305465, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="well/floor"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+shape = SubResource("BoxShape3D_sjp8o")
+
+[node name="top camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3, 0)
+fov = 48.7586
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.64597, 0)
 sky_mode = 1
 
 [node name="tetrimino6" parent="." instance=ExtResource("1_amr45")]
-transform = Transform3D(0.0999758, 0.00218391, -0.000277611, -0.00218421, 0.0999761, -0.000105764, 0.000275235, 0.000111802, 0.0999996, 0.471032, 0.352158, 0)
+transform = Transform3D(0.399903, 0.00873563, -0.00111044, -0.00873684, 0.399904, -0.000423056, 0.00110094, 0.000447208, 0.399998, 0, 0.487708, 0)

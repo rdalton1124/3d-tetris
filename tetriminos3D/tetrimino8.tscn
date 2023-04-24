@@ -11,6 +11,13 @@ material = SubResource("StandardMaterial3D_yn8md")
 [node name="tetrimino8" type="CharacterBody3D"]
 script = ExtResource("1_1okh7")
 
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+polygon = PackedVector2Array(-0.5, -0.5, -0.5, 1.5, 0.5, 1.5, 0.5, 0.5, 1.5, 0.5, 1.5, -0.5)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+polygon = PackedVector2Array(0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5)
+
 [node name="mesh" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="mesh"]

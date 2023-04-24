@@ -26,5 +26,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_cpvpf")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="mesh"]
-transform = Transform3D(0.999988, -0.00187261, 0.0044098, 0.0019986, 0.999585, -0.0287422, -0.00435414, 0.0287507, 0.999577, 0, 2, 0)
+transform = Transform3D(0.999999, 4.18297e-10, 0, -5.15897e-10, 1, 0, 0, 0, 1, 8.36565e-10, 2, 0)
 mesh = SubResource("BoxMesh_cpvpf")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+polygon = PackedVector2Array(-0.5, -1.5, 0.5, -1.5, 0.5, 2.5, -0.5, 2.5)
