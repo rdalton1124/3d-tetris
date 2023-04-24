@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://1vmarn26dta4"]
+[gd_scene load_steps=7 format=3 uid="uid://1vmarn26dta4"]
 
 [ext_resource type="PackedScene" uid="uid://cpwnc80woec0" path="res://tetriminos3D/tetrimino6.tscn" id="1_amr45"]
+[ext_resource type="Script" path="res://scripts/root.gd" id="1_lr66d"]
 [ext_resource type="Texture2D" uid="uid://b0qgny2r33yl5" path="res://checker.png" id="1_opv7x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s0fn"]
@@ -12,6 +13,7 @@ albedo_texture = ExtResource("1_opv7x")
 size = Vector3(2, 0.008, 2)
 
 [node name="root" type="Node3D"]
+script = ExtResource("1_lr66d")
 
 [node name="well" type="Node3D" parent="."]
 
@@ -26,11 +28,15 @@ transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 
 shape = SubResource("BoxShape3D_sjp8o")
 
 [node name="top camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3, 0)
-fov = 48.7586
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+fov = 15.0
+
+[node name="side camera" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.25, 0.692, 2.25)
+fov = 45.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.64597, 0)
+transform = Transform3D(1, 0, 0, 0, 0.989091, 0.147309, 0, -0.147309, 0.989091, 0, 2.91746, -3.16631)
 sky_mode = 1
 
 [node name="tetrimino6" parent="." instance=ExtResource("1_amr45")]
