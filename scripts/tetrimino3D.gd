@@ -2,6 +2,7 @@ extends CharacterBody3D
 @onready var root = get_parent().get_parent()
 @onready var cam = root.get_node("side camera")
 @onready var spawner = get_parent()
+@onready var landed = root.get_node("landed")
 
 # collision variables 
 var collidingLeft
@@ -15,17 +16,24 @@ func _ready():
 	collidingTop = false 
 	collidingBottom = false 
 func _physics_process(delta):
+	
 	if not is_on_floor(): 
+		#go faster is speed up pressed
 		if Input.is_action_pressed("speed_up"):
 			velocity.y = -7.5
+		elif Input.is_action_just_pressed("quick drop"):
+			velocity.y = -9000
+		#otherwise go normal speed 
 		else:
 			velocity.y = -5
 	else:
+		
+		landed.add_child(self) #add self to collection of landedblocks
+		velocity.y = 0#stop
+		finalSnap() 
 		printPos()
-		velocity.y = 0 
-		snap()
-		spawner.spawn()
-		set_physics_process(false)
+		spawner.spawn()#spawn new 
+		set_physics_process(false)#cease physics processsing 
 
 	if Input.is_action_just_pressed("rotate-x-cw"): 
 		self.rotate_x( -PI / 2)
@@ -45,30 +53,26 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("move_forward") and not collidingTop:
 		if cam.is_current():
 			self.position.z -= 2
-		else: 
+		else: #if using back camera, reverse
 			self.position.z += 2 
-		printPos()
 	elif Input.is_action_just_pressed("move_backward") and not collidingBottom:
 		if cam.is_current():
 			self.position.z += 2
-		else: 
+		else: #if using back camera reverse controls
 			self.position.z -= 2
-		printPos()
 	if Input.is_action_just_pressed("move_left") and not collidingLeft:
 		if cam.is_current():
 			self.position.x -= 2
-		else:
+		else: #if using back camera, reverse controls 
 				self.position.x += 2
-		printPos()
 	elif Input.is_action_just_pressed("move_right") and not collidingRight: 
 		if cam.is_current():
 			self.position.x += 2
 		else:
 			self.position.x -= 2
-		printPos()
-	
 	move_and_slide()
-	snap()
+	snap()#snap to grid if not already 
+	
 	#reset collider booleans 
 	collidingLeft = false 
 	collidingRight = false
@@ -88,22 +92,17 @@ func _physics_process(delta):
 		elif get_slide_collision(i).get_collider().name == "wall_bottom":
 			print("bottom wall collision")
 			collidingBottom = true
-		
-func snap(): 
-	var x = int(position.x)
-	var z = int(position.z)
-	if not x % 2 == 0: 
-		position.x -= x % 2
-	
-	if not z % 2 == 0: 
-		position.z -= z % 2
-func finalSnap():
-	snap()
-	var y = int(position.y)
-	if not y % 2 == 0: 
-		position.y -= y % 2
 
+func finalSnap(): 
+	snap()
+	position.y = round(position.y)
+func snap(): 
+	if not fmod(position.x, 2) == 0: 
+		position.x -= fmod(position.x, 2)
+	if not fmod(position.z, 2) == 0: 
+		position.z -= fmod(position.z, 2)
+#prints current position
 func printPos():
 	print("x = " +  str(position.x))
-	print("y = " + str(global_position.y))
+	print("y = " + str(position.y))
 	print("z = " + str(position.z))

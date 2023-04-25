@@ -1,10 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce0jxw8p1twud"]
+[gd_scene load_steps=5 format=3 uid="uid://ce0jxw8p1twud"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b3flo"]
+friction = 0.0
+bounce = 0.46
+absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjooa"]
-size = Vector3(5, 20, 0.1)
+size = Vector3(10, 20, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhvlx"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a1vmo"]
+material = SubResource("StandardMaterial3D_fhvlx")
 
 [node name="wall" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_b3flo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_kjooa")
-disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 20, 0, 0, 0, 0.02, 0, 0, 0)
+mesh = SubResource("BoxMesh_a1vmo")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfhsf5sgaj3i1"]
+[gd_scene load_steps=9 format=3 uid="uid://cfhsf5sgaj3i1"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_lr66d"]
 [ext_resource type="Texture2D" uid="uid://b0qgny2r33yl5" path="res://textures/checker.png" id="2_401pd"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="3_wufij"]
 [ext_resource type="PackedScene" uid="uid://ce0jxw8p1twud" path="res://wall.tscn" id="4_eejy0"]
+[ext_resource type="Script" path="res://clear.gd" id="5_blr60"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s0fn"]
 albedo_texture = ExtResource("2_401pd")
@@ -47,17 +48,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 script = ExtResource("3_wufij")
 
 [node name="wall_right" parent="." instance=ExtResource("4_eejy0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 10, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.9, 10, 0)
 
 [node name="wall_left" parent="." instance=ExtResource("4_eejy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 10, 0)
-rotation_edit_mode = 1
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.9, 10, 0)
 
 [node name="wall_bottom" parent="." instance=ExtResource("4_eejy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 6.9)
 
 [node name="wall_top" parent="." instance=ExtResource("4_eejy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -6.9)
 
 [node name="top viewport container" type="SubViewportContainer" parent="."]
 offset_left = 450.0
@@ -72,6 +72,9 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)
 fov = 15.0
 
-[node name="back_camera" type="Camera3D" parent="."]
+[node name="back camera" type="Camera3D" parent="."]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -10.25, 3.5, -10.25)
 fov = 45.0
+
+[node name="landed" type="Node3D" parent="."]
+script = ExtResource("5_blr60")
