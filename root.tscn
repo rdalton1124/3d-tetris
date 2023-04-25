@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bym3srp2hjywn"]
+[gd_scene load_steps=8 format=3 uid="uid://bym3srp2hjywn"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_lr66d"]
 [ext_resource type="Texture2D" uid="uid://b0qgny2r33yl5" path="res://checker.png" id="1_opv7x"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="3_wufij"]
+[ext_resource type="PackedScene" uid="uid://ce0jxw8p1twud" path="res://wall.tscn" id="4_eejy0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s0fn"]
 albedo_texture = ExtResource("1_opv7x")
@@ -42,3 +43,15 @@ sky_mode = 1
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("3_wufij")
+
+[node name="wall_right" parent="." instance=ExtResource("4_eejy0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 3, 0)
+
+[node name="wall_left" parent="." instance=ExtResource("4_eejy0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 3, 0)
+
+[node name="wall_bottom" parent="." instance=ExtResource("4_eejy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 1)
+
+[node name="wall_top" parent="." instance=ExtResource("4_eejy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -1)
