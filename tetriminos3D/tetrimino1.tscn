@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://sqh2vlue7p41"]
+[gd_scene load_steps=7 format=3 uid="uid://sqh2vlue7p41"]
 
 [ext_resource type="Script" path="res://scripts/tetrimino3D.gd" id="1_qul11"]
+[ext_resource type="Texture2D" uid="uid://obne6qbkhb8u" path="res://textures/navy.png" id="2_ti322"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfsth"]
-albedo_color = Color(0.00784314, 0, 0.580392, 1)
+albedo_texture = ExtResource("2_ti322")
 
 [sub_resource type="BoxMesh" id="BoxMesh_tdhj1"]
 material = SubResource("StandardMaterial3D_xfsth")

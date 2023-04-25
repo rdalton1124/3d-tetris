@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6xnvub8m0gc8"]
+[gd_scene load_steps=8 format=3 uid="uid://b6xnvub8m0gc8"]
 
 [ext_resource type="Script" path="res://scripts/tetrimino3D.gd" id="1_1okh7"]
+[ext_resource type="Texture2D" uid="uid://0t3hw8e28ve3" path="res://textures/plum.png" id="2_8nih3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yn8md"]
-albedo_color = Color(1, 0.580392, 0.858824, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnhad"]
+albedo_color = Color(0.901961, 0.901961, 0.901961, 0)
+albedo_texture = ExtResource("2_8nih3")
 
 [sub_resource type="BoxMesh" id="BoxMesh_j3qqi"]
-material = SubResource("StandardMaterial3D_yn8md")
+material = SubResource("StandardMaterial3D_dnhad")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p3kvw"]
 radius = 0.45
