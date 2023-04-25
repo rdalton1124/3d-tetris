@@ -9,6 +9,7 @@ albedo_color = Color(1, 0.580392, 0.858824, 1)
 material = SubResource("StandardMaterial3D_yn8md")
 
 [node name="tetrimino8" type="CharacterBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("1_1okh7")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]

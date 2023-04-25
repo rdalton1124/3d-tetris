@@ -9,6 +9,7 @@ albedo_color = Color(0, 1, 0, 1)
 material = SubResource("StandardMaterial3D_4l43j")
 
 [node name="tetrimino7" type="CharacterBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("1_j4xo7")
 
 [node name="mesh" type="Node3D" parent="."]

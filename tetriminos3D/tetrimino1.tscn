@@ -9,10 +9,10 @@ albedo_color = Color(0.00784314, 0, 0.580392, 1)
 material = SubResource("StandardMaterial3D_xfsth")
 
 [node name="tetrimino1" type="CharacterBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("1_qul11")
 
 [node name="mesh" type="Node3D" parent="."]
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="mesh"]
 transform = Transform3D(0.999575, 0.000220999, -0.000364621, -0.000221891, 0.999573, -0.00245801, 0.000364079, 0.0024581, 0.999572, 0, 0, 0)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://1vmarn26dta4"]
 
-[ext_resource type="PackedScene" uid="uid://cpwnc80woec0" path="res://tetriminos3D/tetrimino6.tscn" id="1_amr45"]
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_lr66d"]
 [ext_resource type="Texture2D" uid="uid://b0qgny2r33yl5" path="res://checker.png" id="1_opv7x"]
+[ext_resource type="Script" path="res://Spawner.gd" id="3_d13nu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s0fn"]
 albedo_texture = ExtResource("1_opv7x")
@@ -39,5 +39,6 @@ fov = 45.0
 transform = Transform3D(1, 0, 0, 0, 0.989091, 0.147309, 0, -0.147309, 0.989091, 0, 2.91746, -3.16631)
 sky_mode = 1
 
-[node name="tetrimino6" parent="." instance=ExtResource("1_amr45")]
-transform = Transform3D(0.399903, 0.00873563, -0.00111044, -0.00873684, 0.399904, -0.000423056, 0.00110094, 0.000447208, 0.399998, 0, 0.487708, 0)
+[node name="Spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+script = ExtResource("3_d13nu")
