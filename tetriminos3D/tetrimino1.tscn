@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://sqh2vlue7p41"]
+[gd_scene load_steps=6 format=3 uid="uid://sqh2vlue7p41"]
 
 [ext_resource type="Script" path="res://scripts/tetrimino3D.gd" id="1_qul11"]
 
@@ -8,8 +8,16 @@ albedo_color = Color(0.00784314, 0, 0.580392, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_tdhj1"]
 material = SubResource("StandardMaterial3D_xfsth")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vqw1o"]
+height = 3.0
+radius = 0.45
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sjal5"]
+height = 1.0
+radius = 0.49
+
 [node name="tetrimino1" type="CharacterBody3D"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_qul11")
 
 [node name="mesh" type="Node3D" parent="."]
@@ -33,5 +41,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("BoxMesh_tdhj1")
 skeleton = NodePath("../../../../../../..")
 
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
-polygon = PackedVector2Array(1.5, 0.5, 1.5, -0.5, -0.5, -0.5, -0.5, 2.5, 0.5, 2.5, 0.5, 0.5)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_vqw1o")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+shape = SubResource("CylinderShape3D_sjal5")
