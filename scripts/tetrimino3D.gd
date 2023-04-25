@@ -8,7 +8,10 @@ func _ready():
 	
 func _physics_process(delta):
 	if not is_on_floor(): 
-		velocity.y = -.25
+		if Input.is_action_pressed("speed_up"):
+			velocity.y = - .75
+		else:
+			velocity.y = -.5
 	else:
 		velocity.y = 0 
 		root.spawn()
@@ -32,9 +35,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("move_forward"):
 		self.position.z -= .4
 	elif Input.is_action_just_pressed("move_backward"):
-		pass
+		self.position.z += .4
 	if Input.is_action_just_pressed("move_left"):
-		pass
+		self.position.x -= .4
 	elif Input.is_action_just_pressed("move_right"): 
-		pass
+		self.position.x += .4
 	move_and_slide()
