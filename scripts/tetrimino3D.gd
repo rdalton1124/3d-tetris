@@ -1,6 +1,8 @@
 extends CharacterBody3D
-@onready var root = get_parent()
-@onready var spwner = $"../Spawner"
+@onready var root = get_parent().get_parent()
+@onready var cam = root.get_node("side camera")
+@onready var spawner = get_parent()
+
 # collision variables 
 var collidingLeft
 var collidingRight 
@@ -8,7 +10,6 @@ var collidingTop
 var collidingBottom 
 
 func _ready():
-	print("Tetrimino ready called")
 	collidingLeft = false
 	collidingRight = false
 	collidingTop = false 
@@ -20,9 +21,10 @@ func _physics_process(delta):
 		else:
 			velocity.y = -5
 	else:
+		printPos()
 		velocity.y = 0 
 		snap()
-		root.spawn()
+		spawner.spawn()
 		set_physics_process(false)
 
 	if Input.is_action_just_pressed("rotate-x-cw"): 
@@ -41,14 +43,29 @@ func _physics_process(delta):
 		self.rotate_z(PI / 2)
 
 	if Input.is_action_just_pressed("move_forward") and not collidingTop:
-		self.position.z -= 2
+		if cam.is_current():
+			self.position.z -= 2
+		else: 
+			self.position.z += 2 
+		printPos()
 	elif Input.is_action_just_pressed("move_backward") and not collidingBottom:
-		self.position.z += 2
-	
+		if cam.is_current():
+			self.position.z += 2
+		else: 
+			self.position.z -= 2
+		printPos()
 	if Input.is_action_just_pressed("move_left") and not collidingLeft:
-		self.position.x -= 2
+		if cam.is_current():
+			self.position.x -= 2
+		else:
+				self.position.x += 2
+		printPos()
 	elif Input.is_action_just_pressed("move_right") and not collidingRight: 
-		self.position.x += 2
+		if cam.is_current():
+			self.position.x += 2
+		else:
+			self.position.x -= 2
+		printPos()
 	
 	move_and_slide()
 	snap()
@@ -80,3 +97,13 @@ func snap():
 	
 	if not z % 2 == 0: 
 		position.z -= z % 2
+func finalSnap():
+	snap()
+	var y = int(position.y)
+	if not y % 2 == 0: 
+		position.y -= y % 2
+
+func printPos():
+	print("x = " +  str(position.x))
+	print("y = " + str(global_position.y))
+	print("z = " + str(position.z))

@@ -14,8 +14,12 @@ albedo_texture = ExtResource("1_opv7x")
 size = Vector3(2, 0.008, 2)
 
 [node name="root" type="Node3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.61784, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_lr66d")
+
+[node name="side camera" type="Camera3D" parent="."]
+transform = Transform3D(0.353553, 0, 0.353553, 0, 0.5, 0, -0.353553, 0, 0.353553, 10.25, 3.5, 10.25)
+fov = 45.0
 
 [node name="well" type="Node3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -30,16 +34,12 @@ mesh = SubResource("PlaneMesh_d5mrg")
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
 shape = SubResource("BoxShape3D_sjp8o")
 
-[node name="top camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0)
-fov = 15.0
-
-[node name="side camera" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 10.25, 3.5, 10.25)
-fov = 45.0
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.989091, 0.147309, 0, -0.147309, 0.989091, 0, 2.91746, -3.16631)
+sky_mode = 1
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.989016, -0.147809, 0, 0.147809, 0.989016, 0, 2.917, 3.166)
 sky_mode = 1
 
 [node name="Spawner" type="Node3D" parent="."]
@@ -58,3 +58,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 5)
 
 [node name="wall_top" parent="." instance=ExtResource("4_eejy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -5)
+
+[node name="top viewport container" type="SubViewportContainer" parent="."]
+offset_left = 450.0
+offset_right = 962.0
+offset_bottom = 512.0
+
+[node name="top viewport" type="SubViewport" parent="top viewport container"]
+
+[node name="top camera" type="Camera3D" parent="top viewport container/top viewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)
+fov = 15.0
+
+[node name="back_camera" type="Camera3D" parent="."]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -10.25, 3.5, -10.25)
+fov = 45.0
